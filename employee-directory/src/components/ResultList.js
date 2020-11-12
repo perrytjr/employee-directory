@@ -1,12 +1,15 @@
 import React from "react";
 import Moment from "react-moment";
+
 function ResultList(props) {
   return (
     <table className="employeeTable" >
             <thead>
                 <tr>
                     <th></th>
-                    <th onClick={props.sortByName} style={{cursor:'pointer'}}>Name (Click to Sort)</th>
+                    <th onClick={props.randomArrayShuffle} style={{cursor:'pointer'}}>Name (Click to Sort) 
+          
+        </th>
                     <th>Phone</th>
                     <th>E-mail</th>
                     <th>Birthday</th>
