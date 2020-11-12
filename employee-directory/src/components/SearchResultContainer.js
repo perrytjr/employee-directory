@@ -2,26 +2,28 @@ import React, { Component } from "react";
 import SearchForm from "./SearchForm";
 import ResultList from "./ResultList";
 import API from "../utils/API";
-import Header from "./header";
 
 class SearchResultContainer extends Component {
   state = {
     employees: [],
     search: "",
-    results: [],
-
+    results: []
   };
 
   // When this component mounts, search the Giphy API for pictures of kittens
   componentDidMount() {
-    this.search();
+    this.searchGiphy();
   }
 
-  search = query => {
-    API.search(query)
-      .then(res => this.setState({ employees: res.data.data }))
+  searchGiphy = query => {
+    API.getUsers(query)
+      .then(res => {
+        this.setState({ employees: res.data.results })
+        this.setState({ results: res.data.results })
+  })
       .catch(err => console.log(err));
   };
+
 
   handleInputChange = event => {
     const name = event.target.name;
@@ -34,13 +36,12 @@ class SearchResultContainer extends Component {
   // When the form is submitted, search the Giphy API for `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-    this.search(this.state.search);
+    this.searchGiphy(this.state.search);
   };
 
   render() {
     return (
       <div>
-        <Header/>
         <SearchForm
           search={this.state.search}
           handleFormSubmit={this.handleFormSubmit}
