@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import SearchForm from "./SearchForm";
 import ResultList from "./ResultList";
 import API from "../utils/API";
-import Header from "./header";
+import Header from "./Header/header";
+
 class SearchResultContainer extends Component {
   state = {
     employees: [],
     search: "",
     results: [],
-    sortType: "asc"
+    order: ""
 
   };
 
@@ -37,28 +38,24 @@ class SearchResultContainer extends Component {
 };
 
 
-
-sort = (sortType) => {
-  if (sortType === "asc") {
-    this.setState({employees: this.state.employees.sort(function(a, b) {
-        return a.name - b.name
-      }), sortType: "asc"
-    });
-  } else if (sortType === "desc") {
-    this.setState({employees: this.state.employees.sort(function(a, b) {
-        return b.name - a.name
-      }), sortType: "desc"
-    });
+sortName = () => {
+  const filtered = this.state.results;
+  if (this.state.order === "asc") {
+      const sorted = filtered.sort((a, b) => (a.name.first > b.name.first) ? 1 : -1)
+      console.log(sorted);
+      this.setState({
+          results: sorted,
+          order: "desc"
+      })
+  } else {
+      const sorted = filtered.sort((a, b) => (a.name.first > b.name.first) ? -1 : 1)
+      console.log(sorted);
+      this.setState({
+          results: sorted,
+          order: "asc"
+      })
   }
-
-}
-renderSort = () => {
-  if (this.state.employees.length > 0
-    && this.state.results.length > 0) {
-    
-  }
-}
-
+};
 
   // When the form is submitted, search the Giphy API for `this.state.search`
   handleFormSubmit = event => {
@@ -75,7 +72,7 @@ renderSort = () => {
           handleInputChange={this.handleInputChange}
         />
         <ResultList results={this.state.results}
-         renderSort={this.renderSort()}
+         sortName={this.sortName}
          />
       </div>
     );

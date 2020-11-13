@@ -7,7 +7,7 @@ function ResultList(props) {
             <thead>
                 <tr>
                     <th></th>
-                    <th onClick={props.renderSort} style={{cursor:'pointer'}}>Name (sort)</th>
+                    <th onClick={props.sortName} style={{cursor:'pointer'}}>Name (sort)</th>
                     <th>Phone</th>
                     <th>E-mail</th>
                     <th>Birthday</th>
