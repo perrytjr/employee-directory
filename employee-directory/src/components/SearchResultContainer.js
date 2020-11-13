@@ -7,7 +7,8 @@ class SearchResultContainer extends Component {
   state = {
     employees: [],
     search: "",
-    results: []
+    results: [],
+    sortType: "asc"
 
   };
 
@@ -37,7 +38,26 @@ class SearchResultContainer extends Component {
 
 
 
- 
+sort = (sortType) => {
+  if (sortType === "asc") {
+    this.setState({employees: this.state.employees.sort(function(a, b) {
+        return a.name - b.name
+      }), sortType: "asc"
+    });
+  } else if (sortType === "desc") {
+    this.setState({employees: this.state.employees.sort(function(a, b) {
+        return b.name - a.name
+      }), sortType: "desc"
+    });
+  }
+
+}
+renderSort = () => {
+  if (this.state.employees.length > 0
+    && this.state.results.length > 0) {
+    
+  }
+}
 
 
   // When the form is submitted, search the Giphy API for `this.state.search`
@@ -55,6 +75,7 @@ class SearchResultContainer extends Component {
           handleInputChange={this.handleInputChange}
         />
         <ResultList results={this.state.results}
+         renderSort={this.renderSort()}
          />
       </div>
     );
