@@ -6,11 +6,11 @@ function ResultList(props) {
     <table className="employeeTable" >
             <thead>
                 <tr>
-                    <th></th>
+                <th>Image</th>
                     <th onClick={props.sortName} style={{cursor:'pointer'}}>Name (sort)</th>
                     <th>Phone</th>
                     <th>E-mail</th>
-                    <th>Birthday</th>
+                    <th>DOB</th>
                 </tr>
             </thead>
             <tbody className="dataResults">
