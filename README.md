@@ -25,6 +25,8 @@ Class instructor Chris Stead helping with the sort function!
 ## Link
 
 Please use the following link to access the application functioning. 
+
+
 https://safe-gorge-83284.herokuapp.com
 
 Linkedin: https://linkedin.com/in/perry-theobald-42450241
