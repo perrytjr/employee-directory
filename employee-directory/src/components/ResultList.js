@@ -28,4 +28,5 @@ function ResultList(props) {
     )
 }
 
+
 export default ResultList;
