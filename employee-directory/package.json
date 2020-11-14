@@ -19,7 +19,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+  "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://perrytjr.github.io/employee-directory/tree/main/employee"
+  "homepage": "https://perrytjr.github.io/employee-directory/"
 }
